@@ -6,6 +6,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.common.DuckSwerveModule;
 
 public class DuckSwerveDrive extends SubsystemBase {
     private final SwerveDriveKinematics m_driveKinematics;
