@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -46,7 +47,7 @@ public class DuckSwerveModule extends SubsystemBase {
         this.m_drivePlant = new SimpleMotorFeedforward(driveKs, driveKv, driveKa); //calculate these gains as meters per second
         this.absoluteShaftEncoder = new CANCoder(CAN_ID_CANcoder); //make sure to apply the magnet offset in phoenix tuner
 
-        m_turnEncoder.setPosition(this.absoluteShaftEncoder.getPosition());
+        this.m_turnEncoder.setPosition(this.absoluteShaftEncoder.getPosition());
     }
 
     public void updateModuleState(SwerveModuleState velocityVector) {
@@ -61,5 +62,8 @@ public class DuckSwerveModule extends SubsystemBase {
             m_driveController.setReference(m_moduleState.speedMetersPerSecond, ControlType.kVelocity, 0, 
             m_drivePlant.calculate(m_moduleState.speedMetersPerSecond, m_moduleState.speedMetersPerSecond, 0.02)); //rio runs stable at 50hz
         }
+    }
+    public SwerveModulePosition getPosition() {
+        return new SwerveModulePosition(m_driveEncoder.getVelocity(), Rotation2d.fromDegrees(m_turnEncoder.getPosition()));
     }
 }
