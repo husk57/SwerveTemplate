@@ -1,5 +1,6 @@
 package frc.robot.common;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkMaxPIDController;
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.RobotController;
 public class DuckSwerveModule {
     private final CANSparkMax m_turnMotor;
     private double angleGoal;
-    private final CANSparkMax m_driveMotor;
+    private final WPI_TalonFX m_driveMotor;
     private final AnalogInput absoluteEncoder;
     private final boolean absoluteEncoderIsInverted;
     
@@ -25,7 +26,7 @@ public class DuckSwerveModule {
     public DuckSwerveModule(int CAN_ID_TURN_MOTOR, int CAN_ID_DRIVE_MOTOR, int ANALOG_PWM_PORT_NUMBER, double KS_VOLTS_TURNING, boolean absoluteEncoderInverted) {
         //motor configuration on the burned flash, change via dashboard
         this.m_turnMotor = new CANSparkMax(CAN_ID_TURN_MOTOR, MotorType.kBrushless);
-        this.m_driveMotor = new CANSparkMax(CAN_ID_DRIVE_MOTOR, MotorType.kBrushless);
+        this.m_driveMotor = new WPI_TalonFX(CAN_ID_DRIVE_MOTOR);
 
         this.m_turnEncoder = m_turnMotor.getEncoder(); //the motor might need to be inverted if it doesnt rotate CCW+
         this.m_turnController = m_turnMotor.getPIDController();

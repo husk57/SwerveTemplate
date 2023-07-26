@@ -17,7 +17,7 @@ public class RobotContainer {
 
   public RobotContainer() {
     
-    swerveSubsystem.setDefaultCommand(new TeleopSwerve(swerveSubsystem, driverJoystick::getLeftX, driverJoystick::getLeftY, driverJoystick::getRightX));
+    swerveSubsystem.setDefaultCommand(new TeleopSwerve(swerveSubsystem, driverJoystick::getLeftX, driverJoystick::getRightY, driverJoystick::getRightX));
     configureBindings();
   }
 

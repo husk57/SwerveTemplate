@@ -11,7 +11,7 @@ public class DuckSwerveDrive extends SubsystemBase {
 
     public DuckSwerveDrive() {
         // turn can id, drive can id, absolute encoder can id
-        m_FLModule = new DuckSwerveModule(8, 1, 0, 0.05, false);
+        m_FLModule = new DuckSwerveModule(8, 1, 0, 0.0, false);
         gyro = new ADXRS450_Gyro();
     }
 
@@ -19,7 +19,8 @@ public class DuckSwerveDrive extends SubsystemBase {
             double angVelocityDegreesPerSecond) {
                 m_FLModule.setTurnSpeed(velocityXMetersPerSecond);
                 m_FLModule.setDriveSpeed(velocityYMetersPerSecond);
-                System.out.println(m_FLModule.getAnalogEncoderPosition());
+                System.out.println(velocityYMetersPerSecond);
+                //System.out.println(m_FLModule.getAnalogEncoderPosition());
     }
 
     @Override
