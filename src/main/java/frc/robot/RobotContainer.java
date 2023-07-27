@@ -6,12 +6,12 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.CommandPS4Controller;
 import frc.robot.commands.TeleopSwerve;
 import frc.robot.subsystems.DuckSwerveDrive;
 
 public class RobotContainer {
-  private final CommandXboxController driverJoystick = new CommandXboxController(Constants.DriveControllerCharacteristics.port);
+  private final CommandPS4Controller driverJoystick = new CommandPS4Controller(Constants.DriveControllerCharacteristics.port);
 
   private final DuckSwerveDrive swerveSubsystem = new DuckSwerveDrive();
 
